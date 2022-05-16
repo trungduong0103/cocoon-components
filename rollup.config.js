@@ -1,10 +1,10 @@
 import path from "path";
 import fs from "fs";
-import resolve from "@rollup/plugin-node-resolve";
+// import resolve from "@rollup/plugin-node-resolve";
 import commonJs from "@rollup/plugin-commonjs";
 import { swc } from "rollup-plugin-swc3";
-import replace from "@rollup/plugin-replace";
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
+// import replace from "@rollup/plugin-replace";
+// import peerDepsExternal from "rollup-plugin-peer-deps-external";
 
 const resolveApp = (relativePath) => path.resolve(__dirname, relativePath);
 const appBase = resolveApp("src");
@@ -58,6 +58,6 @@ export default {
         keepClassNames: false,
       },
     }),
-    peerDepsExternal(),
+    // peerDepsExternal(),
   ],
 };
