@@ -1,7 +1,7 @@
-import * as react from 'react';
+import * as React from 'react';
 
 function Button({ onClick , children  }) {
-    return /*#__PURE__*/ react.exports.createElement("button", {
+    return /*#__PURE__*/ React.createElement("button", {
         onClick: onClick
     }, children);
 }

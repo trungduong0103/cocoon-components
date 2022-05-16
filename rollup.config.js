@@ -31,16 +31,16 @@ export default {
     format: "es",
   },
   plugins: [
-    replace({
-      "process.env.NODE_ENV": "production",
-      preventAssignment: true,
-    }),
+    // replace({
+    //   "process.env.NODE_ENV": "production",
+    //   preventAssignment: true,
+    // }),
     commonJs({
       include: ["node_modules/**"],
     }),
-    resolve({
-      moduleDirectories: ["node_modules", "./node_modules/"],
-    }),
+    // resolve({
+    //   moduleDirectories: ["node_modules", "./node_modules/"],
+    // }),
     swc({
       include: /\.[jt]sx?$/, // default
       exclude: /node_modules/, // default
