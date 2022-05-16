@@ -60,7 +60,7 @@ function requireReact_development () {
 	hasRequiredReact_development = 1;
 	(function (module, exports) {
 
-		if (process.env.NODE_ENV !== "production") {
+		if (production !== "production") {
 		  (function() {
 
 		/* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
@@ -2789,7 +2789,7 @@ function requireReact_development () {
 
 (function (module) {
 
-	if (process.env.NODE_ENV === 'production') {
+	if (production === 'production') {
 	  module.exports = requireReact_production_min();
 	} else {
 	  module.exports = requireReact_development();
@@ -2798,4 +2798,4 @@ function requireReact_development () {
 
 var React = /*@__PURE__*/getDefaultExportFromCjs(react.exports);
 
-export { React as R };
+export { React as R, react as r };

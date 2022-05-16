@@ -1,7 +1,7 @@
-import { R as React } from './index-f6411dea.js';
+import * as react from 'react';
 
 function Button({ onClick , children  }) {
-    return /*#__PURE__*/ React.createElement("button", {
+    return /*#__PURE__*/ react.exports.createElement("button", {
         onClick: onClick
     }, children);
 }

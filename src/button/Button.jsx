@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 function Button({ onClick, children }) {
   return <button onClick={onClick}>{children}</button>;

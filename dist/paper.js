@@ -1,4 +1,4 @@
-import { R as React } from './index-f6411dea.js';
+import { R as React } from './index-293283cd.js';
 
 function Paper() {
     return /*#__PURE__*/ React.createElement("div", null, children);
