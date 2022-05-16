@@ -1,7 +1,11 @@
-import * as React from "react";
+import React from "react";
 
 function Button({ onClick, children }) {
-  return <button onClick={onClick}>{children}</button>;
+  return (
+    <button style={{ color: "red" }} onClick={onClick}>
+      {children}
+    </button>
+  );
 }
 
 export default Button;

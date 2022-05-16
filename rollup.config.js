@@ -1,10 +1,6 @@
 import path from "path";
 import fs from "fs";
-// import resolve from "@rollup/plugin-node-resolve";
-import commonJs from "@rollup/plugin-commonjs";
 import { swc } from "rollup-plugin-swc3";
-// import replace from "@rollup/plugin-replace";
-// import peerDepsExternal from "rollup-plugin-peer-deps-external";
 
 const resolveApp = (relativePath) => path.resolve(__dirname, relativePath);
 const appBase = resolveApp("src");
@@ -31,18 +27,8 @@ export default {
     format: "es",
   },
   plugins: [
-    // replace({
-    //   "process.env.NODE_ENV": "production",
-    //   preventAssignment: true,
-    // }),
-    commonJs({
-      include: ["node_modules/**"],
-    }),
-    // resolve({
-    //   moduleDirectories: ["node_modules", "./node_modules/"],
-    // }),
     swc({
-      include: /\.[jt]sx?$/, // default
+      include: /\.[jt]sx?$/, // defaultc
       exclude: /node_modules/, // default
       jsc: {
         parser: {
@@ -58,6 +44,6 @@ export default {
         keepClassNames: false,
       },
     }),
-    // peerDepsExternal(),
   ],
+  external: ["react", "react-dom"],
 };
