@@ -3,7 +3,8 @@
   "license": "MIT",
   "version": "1.0.0",
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "link": "cd dist && yarn link"
   },
   "devDependencies": {
     "@rollup/plugin-alias": "^3.1.9",
@@ -11,6 +12,14 @@
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@swc/core": "^1.2.185",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "rollup": "^2.73.0",
     "rollup-plugin-swc": "^0.2.1",
     "rollup-plugin-swc3": "^0.3.0"
