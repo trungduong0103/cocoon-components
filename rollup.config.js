@@ -1,9 +1,12 @@
 import path from "path";
 import fs from "fs";
+import resolve from "@rollup/plugin-node-resolve";
+import commonJs from "@rollup/plugin-commonjs";
 import { swc } from "rollup-plugin-swc3";
 
 const resolveApp = (relativePath) => path.resolve(__dirname, relativePath);
 const appBase = resolveApp("src");
+const APP_BASE_PATH_NODE_MODULES = resolveApp("../../node_modules");
 
 function getEntries() {
   const entries = {};
@@ -26,11 +29,27 @@ export default {
     format: "es",
   },
   plugins: [
+    commonJs(),
+    resolve({
+      moduleDirectories: ["node_modules", APP_BASE_PATH_NODE_MODULES],
+      extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
+    }),
     swc({
-      // All options are optional
       include: /\.[jt]sx?$/, // default
       exclude: /node_modules/, // default
-      jsc: {},
+      jsc: {
+        parser: {
+          syntax: "ecmascript",
+          jsx: true,
+          preserveAllComments: false,
+        },
+        transform: null,
+        target: "es2015",
+        loose: false,
+        externalHelpers: false,
+        // Requires v1.2.50 or upper and requires target to be es2016 or upper.
+        keepClassNames: false,
+      },
     }),
   ],
 };
