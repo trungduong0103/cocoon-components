@@ -1,9 +1,10 @@
 import React from "react";
 import classes from "./Button.module.scss";
+import cn from "classnames";
 
-function Button({ onClick, children, label }) {
+function Button({ className, onClick, label, children }) {
   return (
-    <button className={classes.button} onClick={onClick}>
+    <button className={cn(classes.button, className)} onClick={onClick}>
       {children && children}
       {label}
     </button>

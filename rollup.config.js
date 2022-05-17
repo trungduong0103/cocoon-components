@@ -4,8 +4,8 @@ import { swc } from "rollup-plugin-swc3";
 import postcssPresetEnv from "postcss-preset-env";
 import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
-import commonjs from "@rollup/plugin-commonjs";
-import postcss from "rollup-plugin-postcss";
+import commonJS from "@rollup/plugin-commonjs";
+import postCSS from "rollup-plugin-postcss";
 
 const resolveApp = (relativePath) => path.resolve(__dirname, relativePath);
 const appBase = resolveApp("src");
@@ -32,7 +32,7 @@ export default {
   },
   plugins: [
     resolve(),
-    commonjs(),
+    commonJS(),
     replace({
       "process.env.NODE_ENV": JSON.stringify("production"),
       preventAssignment: false,
@@ -52,10 +52,11 @@ export default {
         externalHelpers: false,
       },
     }),
-    postcss({
+    postCSS({
       autoModules: true,
+      inject: true,
       plugins: [postcssPresetEnv],
     }),
   ],
-  external: [],
+  external: ["react", "react-dom", "classnames"],
 };
