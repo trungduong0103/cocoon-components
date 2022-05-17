@@ -61,7 +61,10 @@ export default {
       processor: (css) =>
         postcss([autoprefixer, postcssPresetEnv])
           .process(css, { from: undefined })
-          .then((result) => result.css),
+          .then((result) => {
+            console.log(result);
+            return `{${result.css}}`;
+          }),
     }),
     // embedCSS(),
   ],
