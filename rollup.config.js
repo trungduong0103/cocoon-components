@@ -4,9 +4,12 @@ import { swc } from "rollup-plugin-swc3";
 import autoprefixer from "autoprefixer";
 import postcssPresetEnv from "postcss-preset-env";
 import postcss from "postcss";
+import resolve from "@rollup/plugin-node-resolve";
 import sass from "rollup-plugin-sass";
 import postcssModules from "postcss-modules";
 import replace from "@rollup/plugin-replace";
+// import embedCSS from "rollup-plugin-embed-css";
+import commonjs from "@rollup/plugin-commonjs";
 
 const resolveApp = (relativePath) => path.resolve(__dirname, relativePath);
 const appBase = resolveApp("src");
@@ -32,15 +35,11 @@ export default {
     format: "es",
   },
   plugins: [
+    resolve(),
+    commonjs(),
     replace({
       "process.env.NODE_ENV": JSON.stringify("production"),
       preventAssignment: false,
-    }),
-    sass({
-      processor: (css) =>
-        postcss({ plugins: [autoprefixer, postcssPresetEnv, postcssModules] })
-          .process(css, { from: undefined })
-          .then((result) => result.css),
     }),
     swc({
       include: /\.[jt]sx?$/,
@@ -57,6 +56,14 @@ export default {
         externalHelpers: false,
       },
     }),
+
+    sass({
+      processor: (css) =>
+        postcss([autoprefixer, postcssPresetEnv, postcssModules])
+          .process(css, { from: undefined })
+          .then((result) => result.css),
+    }),
+    // embedCSS(),
   ],
   external: ["react", "react-dom"],
 };
