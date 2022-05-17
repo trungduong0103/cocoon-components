@@ -65,5 +65,5 @@ export default {
     }),
     // embedCSS(),
   ],
-  external: ["react", "react-dom", "classnames"],
+  external: [],
 };
