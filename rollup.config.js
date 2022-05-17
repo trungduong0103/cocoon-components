@@ -38,8 +38,8 @@ export default {
     }),
     sass({
       processor: (css) =>
-        postcss([autoprefixer, postcssPresetEnv, postcssModules])
-          .process(css)
+        postcss({ plugins: [autoprefixer, postcssPresetEnv, postcssModules] })
+          .process(css, { from: undefined })
           .then((result) => result.css),
     }),
     swc({
