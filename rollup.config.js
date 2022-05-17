@@ -59,11 +59,11 @@ export default {
 
     sass({
       processor: (css) =>
-        postcss([autoprefixer, postcssPresetEnv, postcssModules])
+        postcss([autoprefixer, postcssPresetEnv])
           .process(css, { from: undefined })
           .then((result) => result.css),
     }),
     // embedCSS(),
   ],
-  external: ["react", "react-dom"],
+  external: ["react", "react-dom", "classnames"],
 };
