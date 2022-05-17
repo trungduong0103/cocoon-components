@@ -1,10 +1,15 @@
 import path from "path";
 import fs from "fs";
 import { swc } from "rollup-plugin-swc3";
+import autoprefixer from "autoprefixer";
+import postcssPresetEnv from "postcss-preset-env";
+import postcss from "postcss";
+import sass from "rollup-plugin-sass";
+import postcssModules from "postcss-modules";
+import replace from "@rollup/plugin-replace";
 
 const resolveApp = (relativePath) => path.resolve(__dirname, relativePath);
 const appBase = resolveApp("src");
-const APP_BASE_PATH_NODE_MODULES = resolveApp("node_modules");
 
 function getEntries() {
   const entries = {};
@@ -27,9 +32,19 @@ export default {
     format: "es",
   },
   plugins: [
+    replace({
+      "process.env.NODE_ENV": JSON.stringify("production"),
+      preventAssignment: false,
+    }),
+    sass({
+      processor: (css) =>
+        postcss([autoprefixer, postcssPresetEnv, postcssModules])
+          .process(css)
+          .then((result) => result.css),
+    }),
     swc({
-      include: /\.[jt]sx?$/, // defaultc
-      exclude: /node_modules/, // default
+      include: /\.[jt]sx?$/,
+      exclude: /node_modules/,
       jsc: {
         parser: {
           syntax: "ecmascript",
@@ -40,8 +55,6 @@ export default {
         target: "es2015",
         loose: false,
         externalHelpers: false,
-        // Requires v1.2.50 or upper and requires target to be es2016 or upper.
-        keepClassNames: false,
       },
     }),
   ],

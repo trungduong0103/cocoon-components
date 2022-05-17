@@ -1,9 +1,11 @@
 import React from "react";
+import classes from "./Button.module.scss";
 
-function Button({ onClick, children }) {
+function Button({ onClick, children, label }) {
   return (
-    <button style={{ color: "red" }} onClick={onClick}>
-      {children}
+    <button className={classes.button} onClick={onClick}>
+      {children && children}
+      {label}
     </button>
   );
 }
