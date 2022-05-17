@@ -29,6 +29,7 @@
     "rollup": "^2.73.0",
     "rollup-plugin-embed-css": "^1.0.24",
     "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-sass": "^1.2.12",
     "rollup-plugin-scss": "^3.0.0",
     "rollup-plugin-swc3": "^0.3.0"

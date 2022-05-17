@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./Button.scss";
+import classes from "./Button.module.scss";
 
 function Button({ onClick, children, label }) {
   return (

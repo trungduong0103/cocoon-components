@@ -1,15 +1,11 @@
 import path from "path";
 import fs from "fs";
 import { swc } from "rollup-plugin-swc3";
-import autoprefixer from "autoprefixer";
 import postcssPresetEnv from "postcss-preset-env";
-import postcss from "postcss";
 import resolve from "@rollup/plugin-node-resolve";
-import sass from "rollup-plugin-sass";
-import postcssModules from "postcss-modules";
 import replace from "@rollup/plugin-replace";
-// import embedCSS from "rollup-plugin-embed-css";
 import commonjs from "@rollup/plugin-commonjs";
+import postcss from "rollup-plugin-postcss";
 
 const resolveApp = (relativePath) => path.resolve(__dirname, relativePath);
 const appBase = resolveApp("src");
@@ -56,17 +52,10 @@ export default {
         externalHelpers: false,
       },
     }),
-
-    sass({
-      processor: (css) =>
-        postcss([autoprefixer, postcssPresetEnv])
-          .process(css, { from: undefined })
-          .then((result) => {
-            console.log(result);
-            return `{${result.css}}`;
-          }),
+    postcss({
+      autoModules: true,
+      plugins: [postcssPresetEnv],
     }),
-    // embedCSS(),
   ],
   external: [],
 };
