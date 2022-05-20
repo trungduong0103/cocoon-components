@@ -8,6 +8,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import sass from "rollup-plugin-sass";
 import postcssModules from "postcss-modules";
 import replace from "@rollup/plugin-replace";
+import { terser } from "rollup-plugin-terser";
 // import embedCSS from "rollup-plugin-embed-css";
 import commonjs from "@rollup/plugin-commonjs";
 
@@ -64,6 +65,7 @@ export default {
           .then((result) => result.css),
     }),
     // embedCSS(),
+    terser(),
   ],
   external: ["react", "react-dom"],
 };
