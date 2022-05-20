@@ -1,1 +1,1 @@
-import e from"react";function r(){return e.createElement("div",null,children)}export{r as default};
+import e from"react";import r from"prop-types";import{s as p}from"./style-inject.es-1f59c1d0.js";var o="Paper-module_paper__DhNs4";function a({children:r}){return e.createElement("div",{className:o},r)}p(".Paper-module_paper__DhNs4 {\n  border-radius: 4px;\n  border: 1px solid black;\n}"),a.propTypes={children:r.node},a.defaultProps={children:()=>{}};export{a as default};

@@ -1,7 +1,1 @@
-import t from"react";var r,e={exports:{}};
-/*!
-  Copyright (c) 2018 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-r=e,function(){var t={}.hasOwnProperty;function e(){for(var r=[],n=0;n<arguments.length;n++){var o=arguments[n];if(o){var a=typeof o;if("string"===a||"number"===a)r.push(o);else if(Array.isArray(o)){if(o.length){var i=e.apply(null,o);i&&r.push(i)}}else if("object"===a)if(o.toString===Object.prototype.toString)for(var l in o)t.call(o,l)&&o[l]&&r.push(l);else r.push(o.toString())}}return r.join(" ")}r.exports?(e.default=e,r.exports=e):window.classNames=e}();var n=e.exports;function o({onClick:r,children:e,label:o}){return t.createElement("button",{className:n("._button_1xmoa_1 {\n  background-color: teal;\n  color: white;\n  font-weight: 700;\n  padding: 10px 15px;\n}".button),onClick:r},e&&e,o)}export{o as default};
+import o from"react";import t from"prop-types";import{s as n}from"./style-inject.es-1f59c1d0.js";import e from"classnames";var r="Button-module_button__wLOHw";function c({onClick:t,children:n}){return o.createElement("button",{className:e(r),onClick:t},n&&n)}n(".Button-module_button__wLOHw {\n  background-color: teal;\n  color: white;\n  font-weight: 700;\n  padding: 10px 15px;\n}"),c.propTypes={onClick:t.func,children:t.node},c.defaultProps={onClick:()=>{},children:()=>{}};export{c as default};
